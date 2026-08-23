@@ -1,0 +1,20 @@
+{
+  "name": "electronics-parts-sqlite-memory-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "check": "node --check server.mjs",
+    "test": "node ../../tests/sqlite-memory.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "better-sqlite3": "12.8.0",
+    "zod": "^4.4.3"
+  }
+}

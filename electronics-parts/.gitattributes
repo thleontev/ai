@@ -1,0 +1,3 @@
+# Keep repository text files stable across Windows and CI runners.
+* text=auto eol=lf
+*.bat text eol=crlf

@@ -1,0 +1,11 @@
+{
+  "mpn":"ABC-1",
+  "quantity":12,
+  "supplier":"Tiered",
+  "price_breaks":[
+    {"qty":1,"unit_price":100},
+    {"qty":10,"unit_price":80},
+    {"qty":50,"unit_price":60}
+  ],
+  "expected":{"unit_price":80,"total":960}
+}

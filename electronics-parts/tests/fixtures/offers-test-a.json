@@ -1,0 +1,10 @@
+{
+  "mpn": "TEST-A",
+  "quantity": 20,
+  "offers": [
+    {"supplier":"A","available_quantity":8,"minimum_order_quantity":1,"unit_price":100,"currency":"RUB","lead_time_days":1},
+    {"supplier":"B","available_quantity":50,"minimum_order_quantity":1,"unit_price":120,"currency":"RUB","lead_time_days":2},
+    {"supplier":"C","available_quantity":1000,"minimum_order_quantity":100,"unit_price":80,"currency":"RUB","lead_time_days":1}
+  ],
+  "expected": {"cheapest_full_order_supplier":"B","reason":"C requires buying 100 = 8000 RUB; B requires 20 = 2400 RUB"}
+}

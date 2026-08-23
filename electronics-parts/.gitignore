@@ -1,0 +1,24 @@
+# Dependencies and package-manager state
+node_modules/
+**/node_modules/
+.npm/
+
+# Secrets: commit only the documented template
+.env
+.env.*
+!.env.example
+
+# Local SQLite state and generated data
+data/*.db
+data/*.db-*
+*.db-wal
+*.db-shm
+
+# Test and editor output
+coverage/
+.DS_Store
+Thumbs.db
+*.log
+
+# OpenCode's local dependency cache; skills remain versioned
+.opencode/node_modules/

@@ -1,0 +1,10 @@
+{
+  "mpn":"TEST-B",
+  "quantity":10,
+  "deadline_days":5,
+  "offers":[
+    {"supplier":"CheapSlow","available_quantity":100,"minimum_order_quantity":1,"unit_price":50,"currency":"RUB","lead_time_days":10},
+    {"supplier":"Fast","available_quantity":100,"minimum_order_quantity":1,"unit_price":70,"currency":"RUB","lead_time_days":3}
+  ],
+  "expected":{"balanced":"Fast"}
+}

@@ -1,0 +1,22 @@
+{
+  "name": "electronics-parts-supplier-mcp",
+  "version": "0.1.0",
+  "description": "Local stdio MCP server for electronic-component supplier searches.",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "node server.mjs",
+    "check": "node --check server.mjs",
+    "test": "node --check server.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^4.4.3"
+  }
+}

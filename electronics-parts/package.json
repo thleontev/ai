@@ -1,0 +1,15 @@
+{
+  "name": "electronics-parts",
+  "version": "0.1.0",
+  "private": true,
+  "description": "OpenCode skills and local MCP servers for electronics component sourcing and BOM research.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "npm --prefix mcp/electronics-parts test && npm --prefix mcp/sqlite-memory test",
+    "check": "npm --prefix mcp/electronics-parts run check && npm --prefix mcp/sqlite-memory run check"
+  }
+}

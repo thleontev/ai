@@ -1,0 +1,230 @@
+version: 1
+cases:
+  - id: PS-01
+    skill: ru-part-search
+    prompt: "Где купить TEST-A, нужно 20 шт?"
+    fixture: offers-test-a.json
+    must:
+      - requested_quantity_is_20
+      - offer_with_stock_8_is_not_eligible_as_full_stock
+      - cheapest_total_accounts_for_moq
+      - freshness_reported
+
+  - id: PS-02
+    skill: ru-part-search
+    prompt: "Нужно 10 TEST-B максимум за 5 дней"
+    fixture: offers-test-b.json
+    must:
+      - deadline_filter_applied
+      - cheapest_but_10_day_offer_not_balanced_winner
+
+  - id: PS-03
+    skill: ru-part-search
+    prompt: "Где купить TEST-C?"
+    fixture: source-error.json
+    must:
+      - failed_source_disclosed
+      - no_claim_not_available_in_russia
+
+  - id: PS-04
+    skill: ru-part-search
+    prompt: "Найди ABC-1, 12 шт"
+    fixture: price-breaks.json
+    must:
+      - correct_price_break_for_order_quantity
+
+  - id: PS-05
+    skill: ru-part-search
+    prompt: "Найди ABC-2, 7 шт"
+    fixture: order-multiple.json
+    must:
+      - order_quantity_rounded_up_to_multiple
+
+  - id: PS-06
+    skill: ru-part-search
+    prompt: "Найди ABC-3"
+    must:
+      - exact_mpn_preserved
+      - no_automatic_substitution
+
+  - id: BA-01
+    skill: bom-availability
+    prompt: "Проверь BOM fixture-bom.csv на 10 изделий"
+    fixture: fixture-bom.csv
+    must:
+      - required_quantities_correct
+      - bom_persisted
+
+  - id: BA-02
+    skill: bom-availability
+    prompt: "Проверь BOM на 100 изделий"
+    must:
+      - partial_not_equal_available
+
+  - id: BA-03
+    skill: bom-availability
+    prompt: "Все ли доступно?"
+    fixture: source-error.json
+    must:
+      - unknown_separate_from_not_found
+
+  - id: BA-04
+    skill: bom-availability
+    prompt: "Проверь BOM"
+    fixture: invalid-bom.csv
+    must:
+      - invalid_row_reported
+      - mpn_not_guessed_from_description
+
+  - id: BA-05
+    skill: bom-availability
+    prompt: "Проверь suffix-sensitive BOM"
+    must:
+      - manufacturer_suffixes_not_merged
+
+  - id: BA-06
+    skill: bom-availability
+    prompt: "Проверь BOM и найди блокеры"
+    must:
+      - blockers_sorted_by_severity
+      - failed_sources_reported
+
+  - id: BP-01
+    skill: bom-procurement
+    prompt: "Где дешевле купить BOM на 10 изделий?"
+    must:
+      - cheapest_uses_line_total_not_unit_price_only
+
+  - id: BP-02
+    skill: bom-procurement
+    prompt: "Посчитай закупку 7 шт TEST-X"
+    must:
+      - moq_applied
+      - order_multiple_applied
+
+  - id: BP-03
+    skill: bom-procurement
+    prompt: "Закупка в режиме FASTEST"
+    must:
+      - fastest_prioritized_over_price
+
+  - id: BP-04
+    skill: bom-procurement
+    prompt: "BALANCED, срок 5 дней"
+    must:
+      - deadline_first_then_cost
+
+  - id: BP-05
+    skill: bom-procurement
+    prompt: "Сколько стоит весь BOM?"
+    must:
+      - delivery_not_invented
+      - exclusion_of_delivery_disclosed
+
+  - id: BP-06
+    skill: bom-procurement
+    prompt: "Оптимизируй закупку"
+    must:
+      - no_claim_global_optimum
+
+  - id: CR-01
+    skill: component-replacement
+    prompt: "Чем заменить TEST-REG?"
+    must:
+      - candidates_generated
+      - hard_and_soft_requirements_separated
+
+  - id: CR-02
+    skill: component-replacement
+    prompt: "Нужен drop-in аналог TEST-IC"
+    must:
+      - no_drop_in_without_verified_pinout
+
+  - id: CR-03
+    skill: component-replacement
+    prompt: "Можно ли заменить A на B?"
+    must:
+      - llm_memory_not_used_as_verification_source
+
+  - id: CR-04
+    skill: component-replacement
+    prompt: "Найди функциональный аналог"
+    must:
+      - functional_class_allows_redesign_note
+
+  - id: CR-05
+    skill: component-replacement
+    prompt: "Проверь аналог с другим корпусом"
+    must:
+      - package_mismatch_prevents_drop_in
+
+  - id: CR-06
+    skill: component-replacement
+    prompt: "Проверь кандидат с конфликтом datasheet/catalog"
+    must:
+      - conflict_status_preserved
+      - classification_downgraded
+
+  - id: CR-07
+    skill: component-replacement
+    prompt: "Чем заменить и где купить 20 шт в РФ?"
+    must:
+      - engineering_verification_precedes_procurement_ranking
+      - russian_availability_checked_for_viable_candidates
+
+  - id: CR-08
+    skill: component-replacement
+    prompt: "Повтори анализ замены TEST-IC"
+    must:
+      - prior_replacement_evidence_loaded_from_sqlite
+      - commercial_offers_refreshed_if_stale
+
+  - id: CR-09
+    skill: component-replacement
+    prompt: "Нужен точный аналог TEST-IC"
+    must:
+      - application_context_captured_or_marked_unknown
+      - exact_drop_in_rejected_without_verified_pcb_and_hard_constraints
+      - evidence_has_source_type_locator_and_checked_at
+
+  - id: CR-10
+    skill: component-replacement
+    prompt: "Повтори анализ AP63203WU-7 для платы с VIN 5 В"
+    must:
+      - same_manufacturer_qualified_drop_in_not_called_true_second_source
+      - result_and_user_communication_are_russian
+
+  - id: CR-11
+    skill: component-replacement
+    prompt: "Проверь AP63203QWU-7 как прямую замену"
+    must:
+      - same_die_not_claimed_without_manufacturer_evidence
+      - pcb_verified_requires_project_schematic_and_layout_evidence
+      - verified_mismatch_not_labeled_conflict
+
+  - id: CR-12
+    skill: component-replacement
+    prompt: "Сравни AP63203WU-7 и TPS54302DDCR для платы с VIN 5 В"
+    must:
+      - component_absolute_max_not_automatically_application_hard_constraint
+      - datasheet_unread_candidate_remains_unverified
+      - default_stock_claims_include_checked_at
+      - detailed_evidence_retains_url_and_stock_type
+
+  - id: CR-13
+    skill: component-replacement
+    prompt: "Чем заменить AP63203WU-7?"
+    must:
+      - default_report_starts_with_decision
+      - default_report_has_compact_options_table_with_at_most_four_candidates
+      - project_pcb_pending_is_human_readable_without_hiding_safety_gate
+      - detailed_evidence_available_only_on_request
+
+  - id: CR-14
+    skill: component-replacement
+    prompt: "Подбери независимую замену G050P03K"
+    must:
+      - independent_second_source_claims_different_manufacturer_not_die
+      - reference_and_candidate_pinout_verified_separately
+      - typical_and_maximum_switching_parameters_not_compared_as_equivalent
+      - unverified_no_change_candidate_labeled_recommended_for_qualification

@@ -1,0 +1,7 @@
+{
+  "sources":[
+    {"supplier":"SupplierA","error":"HTTP 429"},
+    {"supplier":"SupplierB","offers":[]}
+  ],
+  "expected":"UNKNOWN, not a confident NOT_FOUND in Russia"
+}
