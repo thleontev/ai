@@ -1,0 +1,20 @@
+{
+  "name": "market-research-sqlite-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local SQLite MCP server for Product Research schema v3",
+  "scripts": {
+    "start": "node server.mjs",
+    "check": "node --check server.mjs",
+    "test": "node ../../tests/market-research-sqlite.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "better-sqlite3": "12.8.0",
+    "zod": "^4.4.3"
+  }
+}

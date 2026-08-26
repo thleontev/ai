@@ -1,0 +1,62 @@
+{
+  "run_id": "<stable-id>",
+  "started_at": "<ISO-8601 timestamp>",
+  "product": "<product or problem>",
+  "region": {
+    "name": "<region name>",
+    "yandex_region_id": "<ID or null>",
+    "avito_location_id": "<ID or null>",
+    "avito_location_verified_exact": false
+  },
+  "geography": {
+    "requested_scope": "<Россия, город или иной явно заданный охват>",
+    "mode": "<national_sources_only | national_with_city_sample | target_city>",
+    "national_sources": [],
+    "avito_coverage": {
+      "type": "<not_used | city_sample | target_city>",
+      "cities": [],
+      "selection_basis": "<user request, agreed panel or null>",
+      "representative": false,
+      "allowed_claim": "<например: только среди проверенных городов>"
+    }
+  },
+  "sources": {
+    "yandex_analytics": {
+      "wordstat_available": false,
+      "search_api_available": false,
+      "tools": []
+    },
+    "avito_analytics": {
+      "authorized": false,
+      "blocked_until": null,
+      "requests_in_session": 0,
+      "max_requests_per_session": 0,
+      "category_analysis": {
+        "target_category_name": null,
+        "target_category_id": null,
+        "path_depth_planned": 0,
+        "path_nodes_collected": [],
+        "period": null,
+        "status": "not_started"
+      }
+    },
+    "playwright": { "available": false },
+    "sqlite": { "available": false, "integrity": "not_checked" }
+  },
+  "budget": {
+    "wordstat_calls_limit": 12,
+    "avito_analytics_calls_limit": 10,
+    "search_calls_limit": 10,
+    "public_pages_limit": 25
+  },
+  "limitations": [],
+  "report_path": "<relative path>",
+  "deliverables": {
+    "markdown": "<relative path>",
+    "html": "<relative path or null>",
+    "pdf": "<relative path or null>",
+    "pdf_check_dir": "<relative path or null>",
+    "pdf_status": "not_started"
+  },
+  "raw_evidence_refs": []
+}

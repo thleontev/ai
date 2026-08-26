@@ -1,0 +1,27 @@
+# Dependencies and generated runtime state
+**/node_modules/
+.playwright-mcp/
+tmp/
+*.log
+
+# Credentials, browser profiles and raw source responses
+.env
+.env.*
+!.env.example
+data/
+**/data/
+*.sqlite
+*.sqlite3
+*.db
+*.db-wal
+*.db-shm
+
+# Local research runs and generated deliverables
+research/
+*.zip
+*.pdf
+pdf-check/
+
+# OS and editor files
+.DS_Store
+Thumbs.db

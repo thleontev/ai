@@ -1,0 +1,17 @@
+{
+  "name": "avito-analytics-mcp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "MCP server for Avito 'Analytics of demand' (categories demand + wordstat search queries) via an authorized browser session",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "check": "node --check server.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "playwright-core": "^1.57.0",
+    "zod": "^4.4.3"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "product-research-toolkit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "OpenCode product-research skill with local Yandex and Avito analytics MCP servers",
+  "scripts": {
+    "setup": "npm ci --prefix mcp/avito-analytics && npm ci --prefix mcp/yandex-analytics && npm ci --prefix mcp/market-research-sqlite",
+    "check": "node scripts/validate-product-research.mjs && npm run check --prefix mcp/avito-analytics && npm run check --prefix mcp/yandex-analytics && npm run check --prefix mcp/market-research-sqlite",
+    "test": "npm run check && npm test --prefix mcp/market-research-sqlite"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

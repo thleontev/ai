@@ -1,0 +1,16 @@
+{
+  "name": "yandex-analytics-mcp",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "description": "MCP server for Yandex Cloud Search API v2: Wordstat statistics + Web search (sync and deferred)",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "check": "node --check server.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^4.4.3"
+  }
+}

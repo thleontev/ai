@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "source": "<wordstat | avito_analytics | web_sample>",
+    "region": "<регион>",
+    "period": "<период>",
+    "data_level": "<query | cluster | category | listing | region>",
+    "evidence_ref": "<ссылка на исходные данные>"
+  },
+  "charts": [
+    {
+      "type": "line",
+      "filename": "wordstat-dynamics.svg",
+      "title": "<название графика>",
+      "subtitle": "<источник, регион и период>",
+      "footer": "<ограничение или ссылка на раздел «Исходные данные»>",
+      "series": []
+    },
+    {
+      "type": "market_profile",
+      "filename": "market-profile.svg",
+      "title": "<предложение и отклик на площадке>",
+      "subtitle": "<категория, города и период>",
+      "footer": "<уровень данных, evidence_ref и ограничение>",
+      "items": [
+        {
+          "name": "<город или категория>",
+          "sellers": 0,
+          "listings": 0,
+          "views_per_listing": 0,
+          "contacts_per_listing": 0,
+          "conversion_pct": 0
+        }
+      ]
+    }
+  ]
+}

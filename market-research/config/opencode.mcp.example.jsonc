@@ -1,0 +1,38 @@
+{
+  "mcp": {
+    "yandex-analytics": {
+      "type": "local",
+      "command": ["node", "C:\\path\\to\\product-research\\mcp\\yandex-analytics\\server.mjs"],
+      "cwd": "C:\\path\\to\\product-research\\mcp\\yandex-analytics",
+      "environment": {
+        "WORDSTAT_API_KEY": "{env:WORDSTAT_API_KEY}",
+        "WORDSTAT_FOLDER_ID": "{env:WORDSTAT_FOLDER_ID}",
+        "SEARCH_API_KEY": "{env:SEARCH_API_KEY}",
+        "SEARCH_FOLDER_ID": "{env:SEARCH_FOLDER_ID}"
+      },
+      "enabled": true,
+      "timeout": 60000
+    },
+    "avito-analytics": {
+      "type": "local",
+      "command": ["node", "C:\\path\\to\\product-research\\mcp\\avito-analytics\\server.mjs"],
+      "cwd": "C:\\path\\to\\product-research\\mcp\\avito-analytics",
+      "environment": {
+        "AVITO_MIN_INTERVAL_MS": "8000",
+        "AVITO_MAX_INTERVAL_MS": "20000"
+      },
+      "enabled": true,
+      "timeout": 60000
+    },
+    "market-research-sqlite": {
+      "type": "local",
+      "command": ["node", "C:\\path\\to\\product-research\\mcp\\market-research-sqlite\\server.mjs"],
+      "cwd": "C:\\path\\to\\product-research\\mcp\\market-research-sqlite",
+      "environment": {
+        "MARKET_RESEARCH_DB": "C:\\path\\to\\your-working-project\\sqlite.db"
+      },
+      "enabled": true,
+      "timeout": 60000
+    }
+  }
+}
